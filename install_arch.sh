@@ -9,3 +9,15 @@ echo -n "Enter drive:"
 read drive
 echo $drive
 
+echo "Partitions from drive $drive are:"
+lsblk $drive
+
+echo -n "root partition:"
+read root
+echo -n "efi partition:"
+read efi
+
+
+#fdisk $drive << FDISK_CMD
+
+#FDISK_CMD
