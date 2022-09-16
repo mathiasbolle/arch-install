@@ -15,7 +15,8 @@ echo $drive
 
 changes=""
 
-while ["$changes" != "y" ];
+# 
+while ["$changes" -ne "y" ];
 do
 	echo "Partitions from drive $drive are:"
 	lsblk $drive
