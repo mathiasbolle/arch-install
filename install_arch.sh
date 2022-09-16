@@ -13,10 +13,10 @@ echo -n "Enter drive:"
 read drive
 echo $drive
 
-changes=""
+changes="n"
 
 # 
-while ["$changes" -ne "y" ];
+while ["$changes" != "y" ];
 do
 	echo "Partitions from drive $drive are:"
 	lsblk $drive
