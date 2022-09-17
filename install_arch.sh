@@ -21,6 +21,7 @@ do
 	echo "Partitions from drive $drive are:"
 	lsblk "/dev/"$drive
 
+	cfdisk "/dev/"$drive
 
 	echo "are the partitions OK for drive $drive (y/n): "
 	read changes
