@@ -16,10 +16,10 @@ echo $drive
 changes="n"
 
 # 
-while [$changes != "y" ];
+while [ $changes != "y" ];
 do
 	echo "Partitions from drive $drive are:"
-	lsblk $drive
+	lsblk "/dev/"$drive
 
 
 	echo "are the partitions OK for drive $drive (y/n): "
