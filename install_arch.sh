@@ -54,7 +54,10 @@ mount --mkdir /dev/$efi /mnt/boot
 swapon /dev/$swap
 
 # installation of basic arch linux software
-pacstrap /mnt base linux linux-firmware base-devel man-db neovim networkmanager
+# + additional (basic) software
+# text editor: Neovim
+# networking: NetworkManager
+pacstrap /mnt base linux linux-firmware base-devel man-db neovim networkmanager refind efibootmgr
 
 cd
 
@@ -79,4 +82,12 @@ arch-chroot /mnt /bin/bash -c "mkinitcpio -P"
 
 arch-chroot /mnt /bin/bash -c "passwd"
 
+arch-chroot /mnt /bin/bash -c "systemctl enable NetworkManager"
+
+
 # boot loader?
+mkdir -p /mnt/boot/EFI/refind/drivers/x64
+cp /mnt/usr/share/refind/drivers_x64/btrfs_x64.efi /mnt/boot/EFI/refind/drivers/x64
+
+echo "also_scan_dirs +,subvolume/boot" >> /mnt/boot/EFI/refind/refind.conf
+# "Boot using standard options"  "root=PARTUUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw rootflags=subvol=subvolume initrd=subvolume\boot\initramfs-%v.img"
