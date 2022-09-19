@@ -66,13 +66,13 @@ hwclock --systohc
 echo "en_US.UTF-8 UTF-8" >> mnt/etc/locale.gen
 arch-chroot /mnt /bin/bash -c "locale-gen"
 
-touch /etc/locale.conf
+touch mnt/etc/locale.conf
 echo "LANG=en_US.UTF-8" >> mnt/etc/locale.conf
 
-touch /etc/vconsole.conf
+touch mnt/etc/vconsole.conf
 echo "KEYMAP=azerty" >> mnt/etc/vconsole.conf
 
-touch /etc/hostname
+touch mnt/etc/hostname
 echo "thinkbook" >> mnt/etc/hostname
 
 mkinitcpio -P
