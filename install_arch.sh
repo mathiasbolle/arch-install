@@ -46,9 +46,9 @@ btrfs subvolume create /mnt/@
 btrfs subvolume create /mnt/@home
 
 umount /mnt
-mount subvol=@ /dev/$root /mnt
+mount -o subvol=@ /dev/$root /mnt
 mkdir -p /mnt/home
-mount subvol=@home /dev/root /mnt/home
+mount -o subvol=@home /dev/root /mnt/home
 
 mount --mkdir /dev/$efi /mnt/boot
 swapon /dev/$swap
