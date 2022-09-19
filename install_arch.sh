@@ -85,7 +85,8 @@ arch-chroot /mnt /bin/bash -c "passwd"
 arch-chroot /mnt /bin/bash -c "systemctl enable NetworkManager"
 
 
-# boot loader?
+# boot loader
+arch-chroot /mnt /bin/bash -c "refind-install"
 mkdir -p /mnt/boot/EFI/refind/drivers/x64
 cp /mnt/usr/share/refind/drivers_x64/btrfs_x64.efi /mnt/boot/EFI/refind/drivers/x64
 
