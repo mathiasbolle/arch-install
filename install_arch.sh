@@ -38,6 +38,7 @@ read swap
 # generate filesystem
 mkfs.btrfs -L root /dev/$root # create btrfs filesystem with label 'root'
 mkswap -L swap /dev/$swap # create swap with label 'swap'
+mkfs.fat -F 32 /dev/$efi
 # no efi for windows?
 
 # btrfs filesystem
