@@ -58,7 +58,7 @@ swapon /dev/$swap
 # + additional (basic) software
 # text editor: Neovim
 # networking: NetworkManager
-pacstrap /mnt base linux linux-firmware base-devel man-db neovim networkmanager refind efibootmgr
+pacstrap /mnt base linux linux-firmware base-devel man-db neovim networkmanager refind efibootmgr btrfs-progs
 
 cd
 
