@@ -91,5 +91,6 @@ arch-chroot /mnt /bin/bash -c "refind-install"
 mkdir -p /mnt/boot/EFI/refind/drivers/x64
 cp /mnt/usr/share/refind/drivers_x64/btrfs_x64.efi /mnt/boot/EFI/refind/drivers/x64
 
+touch /mnt/boot/refind_linux.conf
 echo "also_scan_dirs +,subvolume/boot" >> /mnt/boot/EFI/refind/refind.conf
-# "Boot using standard options"  "root=PARTUUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw rootflags=subvol=subvolume initrd=subvolume\boot\initramfs-%v.img"
+echo \"Boot using standard options\"  \"root=PARTUUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw rootflags=subvol=subvolume initrd=subvolume\boot\initramfs-%v.img\" >> /mnt/boot/refind_linux.conf
