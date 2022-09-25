@@ -49,7 +49,7 @@ btrfs subvolume create /mnt/@home
 umount /mnt
 mount -o subvol=@ /dev/$root /mnt
 mkdir -p /mnt/home
-mount -o subvol=@home /dev/root /mnt/home
+mount -o subvol=@home /dev/$root /mnt/home
 
 mount --mkdir /dev/$efi /mnt/boot
 swapon /dev/$swap
@@ -97,5 +97,5 @@ arch-chroot /mnt /bin/bash -c "systemctl enable NetworkManager"
 
 # grub
 
-grub-install --targer=x86_64-efi --efi-directory=/dev/$efi --bootloader-id=GRUB
-grub-mkconfig -o mnt/boot/grub/grub.cfg
+arch-chroot /mnt /bin/bash -c "grub-install --targer=x86_64-efi --efi-directory=/dev/$efi --bootloader-id=GRUB"
+arch-chroot /mnt /bin/bash -c "grub-mkconfig -o /boot/grub/grub.cfg"
