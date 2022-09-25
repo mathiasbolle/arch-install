@@ -58,7 +58,7 @@ swapon /dev/$swap
 # + additional (basic) software
 # text editor: Neovim
 # networking: NetworkManager
-pacstrap /mnt base linux linux-firmware base-devel man-db neovim networkmanager refind efibootmgr btrfs-progs
+pacstrap /mnt base linux linux-firmware base-devel man-db neovim networkmanager grub efibootmgr btrfs-progs
 
 cd
 
@@ -87,10 +87,15 @@ arch-chroot /mnt /bin/bash -c "systemctl enable NetworkManager"
 
 
 # boot loader
-arch-chroot /mnt /bin/bash -c "refind-install"
-mkdir -p /mnt/boot/EFI/refind/drivers/x64
-cp /mnt/usr/share/refind/drivers_x64/btrfs_x64.efi /mnt/boot/EFI/refind/drivers_x64/btrfs_x64.efi
+#arch-chroot /mnt /bin/bash -c "refind-install"
+#mkdir -p /mnt/boot/EFI/refind/drivers/x64
+#cp /mnt/usr/share/refind/drivers_x64/btrfs_x64.efi /mnt/boot/EFI/refind/drivers_x64/btrfs_x64.efi
 
-touch /mnt/boot/refind_linux.conf
-echo "also_scan_dirs +,@/boot" >> /mnt/boot/EFI/refind/refind.conf
-echo \"Boot using standard options\"  \"root=PARTUUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw rootflags=subvol=@ initrd=subvolume\\boot\\initramfs-%v.img\" >> /mnt/boot/refind_linux.conf
+#touch /mnt/boot/refind_linux.conf
+#echo "also_scan_dirs +,@/boot" >> /mnt/boot/EFI/refind/refind.conf
+#echo \"Boot using standard options\"  \"root=PARTUUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw rootflags=subvol=@ initrd=subvolume\\boot\\initramfs-%v.img\" >> /mnt/boot/refind_linux.conf
+
+# grub
+
+grub-install --targer=x86_64-efi --efi-directory=/dev/$efi --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub/cfg
