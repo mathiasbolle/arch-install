@@ -98,4 +98,4 @@ arch-chroot /mnt /bin/bash -c "systemctl enable NetworkManager"
 # grub
 
 grub-install --targer=x86_64-efi --efi-directory=/dev/$efi --bootloader-id=GRUB
-grub-mkconfig -o /boot/grub/grub/cfg
+grub-mkconfig -o mnt/boot/grub/grub.cfg
